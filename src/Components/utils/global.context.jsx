@@ -5,12 +5,13 @@ import axios from "axios";
 
 export const DentistaStates = createContext();
 
+const favs =[]
 const initialState = {
   theme: "light",
-  favs: [],
+  favs: JSON.parse(localStorage.getItem('favs')) || [],
   list: [],
   dentistaSelected: [],
-};
+}
 
 const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -22,6 +23,10 @@ const ContextProvider = ({ children }) => {
         dispatch({ type:'GET_LIST', payload: res.data.list });
       });
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favs', JSON.stringify(state.favs))
+  }, [state,favs]);
  
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
