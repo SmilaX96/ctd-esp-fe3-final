@@ -12,11 +12,29 @@ code {
     monospace;
 }
 .favButton{
-  background-color: rgba(136, 136, 136, 0.116);
+  background-color: rgba(4, 139, 212, 0.153);
   padding: 10px;
+  border-radius: 15px;
   border: none;
-  width: 100%;
+  width: 40%;
   cursor: pointer;
+}
+
+.doctImg{
+  width: 160px;
+  border-radius: 20px;
+
+}
+
+.pError{
+  text-align: center;
+  margin-top: 50px;
+  color: #d50000;
+}
+
+.h4Correct{
+  text-align: center;
+  margin-top: 50px;
 }
 
 h1{
@@ -25,9 +43,49 @@ h1{
 
 nav{
   display: flex;
-  width: 80vw;
-  justify-content: flex-start;
+  justify-content: right;
   padding: 1rem;
+
+ 
+}
+
+.botonTheme{
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  background-color: #2d2b2b;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 40px;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.botonForm{
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  background-color: #2d2b2b;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 250px;
+  margin-right: 250px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+ 
+}
+
+.divContact{
+  margin-left: 50px;
+ 
 }
 
 a{
@@ -65,9 +123,11 @@ form{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 300px;
+  width: 600px;
   height: 100px;
   margin: 0 auto;
+  text-align: center;
+  margin-top: 50px;
 }
 
 .card{
@@ -78,6 +138,8 @@ form{
   width: 200px;
   padding: 0.5rem 0.5rem 0 0.5rem;
   border: 0.5px solid rgb(136, 136, 136);
+  text-align: center;
+  border-radius: 30px;
 }
 
 .card:hover{
@@ -100,6 +162,7 @@ table {
     width: 100%;
     display: table;
     border: 1px solid #ccc;
+    text-align: center;
 
 }
 

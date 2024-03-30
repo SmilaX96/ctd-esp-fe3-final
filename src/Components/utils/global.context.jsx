@@ -1,15 +1,39 @@
-import { createContext } from "react";
+import { createContext, useReducer } from "react";
+import { useContext, useState,useEffect } from "react";
+import { reducer } from "./reducer";
+import axios from "axios";
 
-export const initialState = {theme: "", data: []}
+export const DentistaStates = createContext();
 
-export const ContextGlobal = createContext(undefined);
+const initialState = {
+  theme: "light",
+  favs: [],
+  list: [],
+  dentistaSelected: [],
+};
 
-export const ContextProvider = ({ children }) => {
-  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
+const ContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const [theme, setTheme] = useState(initialState.theme);
+
+  useEffect(() => {
+    axios('https://jsonplaceholder.typicode.com/users')
+      .then(res => {
+        dispatch({ type:'GET_LIST', payload: res.data.list });
+      });
+  }, []);
+ 
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
 
   return (
-    <ContextGlobal.Provider value={{}}>
+    <DentistaStates.Provider value={{ theme, toggleTheme, state, dispatch }}>
       {children}
-    </ContextGlobal.Provider>
+    </DentistaStates.Provider>
   );
 };
+
+export const useDentistaStates = () => useContext(DentistaStates);
+
+export default ContextProvider;
